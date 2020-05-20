@@ -29,16 +29,6 @@ cd ros2-hands-on
 
 まずはオーソドックスなプログラムの実装方法を見ていきましょう
 
-### パッケージの作成
-
-プログラムを実装するためのパッケージを作成します。以下のコマンドでパッケージを作成しましょう
-
-```shell
-cd ~/ros2_basics/src/ros2-hands-on$
-ros2 pkg create sending_message
-cd sending_message
-```
-
 ### ビルドの準備
 
 まず、ROSのノードを実装する際に必要なのがpackage.xml とCMakeLists.txtです。

@@ -26,13 +26,13 @@ namespace displayer_basic_version
 Displayer::Displayer(const rclcpp::NodeOptions & options)
 : Node("displayer", options)
 {
-  sub_ = this->create_subscription<std_msgs::msg::String>(
-    "greeting", 10, std::bind(&Displayer::display_greeting, this, _1));
+  // sub_ = this->create_subscription<std_msgs::msg::String>(
+  //   "greeting", 10, std::bind(&Displayer::display_greeting, this, _1));
 }
 
 void Displayer::display_greeting(const std_msgs::msg::String::SharedPtr msg)
 {
-  RCLCPP_INFO(this->get_logger(), "Received greeting '%s'", msg->data.c_str());
+  //RCLCPP_INFO(this->get_logger(), "Received greeting '%s'", msg->data.c_str());
 }
 
 } // namespace displayer_basic_version

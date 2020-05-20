@@ -20,8 +20,8 @@ private:
   void timer_callback()
   {
     auto vel = geometry_msgs::msg::Twist();
-    vel.linear.x=3.0;
-    vel.angular.z=3.0;
+    vel.linear.x=0.0;
+    vel.angular.z=0.0;
     RCLCPP_INFO(this->get_logger(), "Publishing: vel");
     publisher_->publish(vel);
   }

@@ -9,7 +9,7 @@ ROS2をインストールするために、Ubuntuの仮想環境を構築しま�
 https://www.virtualbox.org/
 
 
-### 1-2.VirtualBoxにUbuntu **18.04** をインストールする
+### 0-1-2.VirtualBoxにUbuntu **18.04** をインストールする
 
 ubuntu のインストールは下記のQiita等を参照下さい
 - https://qiita.com/yoshi0518/items/85549e93e1d4eb6d0a12#sshd

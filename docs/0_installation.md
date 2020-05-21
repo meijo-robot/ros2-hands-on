@@ -8,41 +8,50 @@ ROS2をインストールするために、Ubuntuの仮想環境を構築しま�
 
 https://www.virtualbox.org/
 
-
 ### 0-1-2.VirtualBoxにUbuntu **18.04** をインストールする
 
 ubuntu のインストールは下記のQiita等を参照下さい
+
 - https://qiita.com/yoshi0518/items/85549e93e1d4eb6d0a12#sshd
 - https://qiita.com/pyon_kiti_jp/items/0be8ac17439abf418e48
 - https://www.sejuku.net/blog/82291
 
 インストール後にターミナルを起動して以下のコマンドを実行してください。
-``` sh
+```shell
 $ sudo apt update
 $ sudo apt upgrade
 ```
 
-
 VirtualBoxの**Guest Addition CD** をインストールして仮想OSを再起動してください
 
-![](./images/6_GuestAdditions.png)
+VirtualBoxのゲストOS起動中に[デバイス]->[Guest Addition CDイメージの挿入]を選択すると、インストール用の仮想ディスクがゲストOSに挿入されます。
+
+[](./img/guest_addition_.jpg)
+
+以下の画面が出るので[実行する]をクリックしてください。
+
+[](./img/auth.jpg)
+
+認証を求められるのでパスワードを入力してください。インストールが完了すると再起動を求められるので、ゲストOSを再起動してください。
 
 
-下記のコマンドでgitのインストールをしてください
-```sh
-$ sudo apt install git 
+# 0-1-3.ハンズオンで使用するソフトウェアをインストールする
+
+再起動後、下記のコマンドでgitのインストールをしてください
+
+```shell
+sudo apt install git
 ```
 
-gitは、ソースコードなどの変更履歴を記録して管理するバージョン管理システムと呼ばれるものです。 今回のセミナーでは詳細は触れませんが、研究開発を行う上では非常に有用なシステムですので、利用をお勧めします。 公式の解説書、[Pro Git](https://git-scm.com/book/ja/v2)などを参考にして下さい
+gitは、ソースコードなどの変更履歴を記録して管理するバージョン管理システムと呼ばれるものです。 今回のセミナーでは詳細は触れませんが、研究開発を行う上では非常に有用なソフトですので、利用をお勧めします。 使い方は公式の解説書、[Pro Git](https://git-scm.com/book/ja/v2)などを参考にして下さい
 
+必須ではありませんが、VSCodeをインストールしておくとコードの入力間違い等が少なく便利です
 
-必須ではありませんが、
-VSCodeをインストールしておくとコードの入力間違い等が少なく便利です
+```shell
+sudo snap install --classic code
 ```
-$ sudo snap install --classic code
-```
 
-これでOSのインストールは終了です。
+これでOSと関連ソフトウェアのインストールは終了です。
 
 ## 0-2.ROS2のインストール
 
@@ -88,10 +97,9 @@ $ sudo apt install ros-${ROS_DISTRO}-desktop
 下記のコマンドで、ROS2で使うビルドシステムなどのソフトウェアをインストールします
 
 ```sh
-$ sudo apt install ros-$ROS_DISTRO-desktop python3-colcon-common-extensions python3-rosdep python3-argcomplete
+$ sudo apt install python3-colcon-common-extensions python3-rosdep python3-argcomplete
 ```
-- ros-$ROS_DISTRO-desktop 
-  - ROS2本体(GUI,他のツール等を全て含みます)
+
 - python3-colcon-common-extensions
   - ROSパッケージをビルドするためのツール
 - python3-rosdep
@@ -108,13 +116,14 @@ $ echo "source /opt/ros/dashing/setup.bash" >> ~/.bashrc
 ## 0-3.ROS2のインストール確認
 
 ROS2のインストールが正常に行えているかどうかをサンプルプログラムを用いてチェックを行います。
-ターミナルを立ち上げ、
+ターミナルを立ち上げ、以下を入力してlistenerノードを起動してください。
+
 ```
 $ ros2 run demo_nodes_cpp listener
 ```
-と入力してlistenerノードを起動してください。
 
- **別のターミナル**を立ち上げ、
+listenerノードの起動後、 **別のターミナル**を立ち上げ、
+
 ```
 $ ros2 run demo_nodes_cpp talker
 ```

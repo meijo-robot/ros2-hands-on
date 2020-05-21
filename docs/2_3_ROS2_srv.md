@@ -58,7 +58,8 @@ void GreetingServer::send_greeting(
 
 ## 2-3-2.ビルド
 
-ビルドしてみましょう
+ビルドする前に2_3_service_message/COLCON_IGNOREをリネームもしくは削除してください。
+以下のコマンドでビルドしてみましょう。
 
 ``` shell
 cd ~/ros2_basics
@@ -67,7 +68,8 @@ colcon build --merge-install
 
 ## 2-3-3.実行
 
-2つの端末でそれぞれ以下のコマンドを入力して実行してみましょう
+2つの端末でそれぞれ以下のコマンドを入力して実行してみましょう。
+
 [端末 A]
 
 ```shell

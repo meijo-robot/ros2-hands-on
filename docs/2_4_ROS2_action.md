@@ -36,7 +36,8 @@ action server はリクエストを受け取るコールバック関数をそれ
 
 ## 2-2-2.ビルド
 
-ビルドしてみましょう
+ビルドする前に2_3_service_message/COLCON_IGNOREをリネームもしくは削除してください。
+以下のコマンドでビルドしてみましょう。
 
 ``` shell
 cd ~/ros2_basics

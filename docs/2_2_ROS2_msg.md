@@ -2,23 +2,27 @@
 
 ## 2-2-1.メッセージ型の定義
 
-メッセージ型の定義の際の操作は以下の通りです
+メッセージ型の定義の際の操作は以下の通りです。
 
 1. msgファイルとプロジェクトの作成
 2. package.xmlの更新
 3. CMakeLists.txtの更新
 4. プログラム内で使用する
 
+今回のディレクトリには
 独自でメッセージ型を定義するにはmsgファイルを作成します
 
 ~/ros2_basics/src/ros2-hands-on/2_2_custom_messge/msgディレクトリ下にGreeting.msgという名前のファイルがあります。
 中身を確認してみましょう。
 
+### Greeting.msgのファイルの中身
 ``` Greeting.msg
 string hello_text
 string world_name
 int16 count
 ```
+
+### package.xml
 
 ```xml package.xml
 [略]
@@ -37,6 +41,8 @@ int16 count
   </export>
 [略]
 ```
+
+### CMakeLists.txt
 
 ```cmake CMakeLists.txt
 [略]
@@ -63,7 +69,8 @@ ament_export_dependencies(greeting_msg)
 
 ## 2-2-2.ビルド
 
-ビルドしてみましょう
+ビルドする前に2_2_custom_message/COLCON_IGNOREをリネームもしくは削除してください
+以下のコマンドで、ビルドしてみましょう
 
 ``` shell
 cd ~/ros2_basics

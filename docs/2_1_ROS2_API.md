@@ -31,112 +31,14 @@ cd ros2-hands-on
 
 ### ビルドの準備
 
-まず、ROSのノードを実装する際に必要なのがpackage.xml とCMakeLists.txtです。
+まず、2_1_sending_message/COLCON_IGNOREファイルをリネームするか削除してください。
+(COLCON_IGNOREファイルが設置されているフォルダはcolconから無視されます)
+
+ROSのノードを実装する際に必要なのがpackage.xml とCMakeLists.txtです。
 それぞれ以下の役目があります。
 
 - package.xml : プログラムに必要な依存関係を記述
 - CMakeLists : プログラムのビルドの手順などを記述
-
-先程のコマンドで作ったパッケージにすでに上記のファイルができています。
-それぞれのファイルを以下のように編集していきましょう。
-
-#### package.xml
-
-```xml package.xml
-<?xml version="1.0"?>
-<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
-<package format="3">
-  <name>greeter_ros2_style</name>
-  <version>1.2.0</version>
-  <description>講習会用のサンプルソース：ROS2形式のメッセージ送信ノード</description>
-  <maintainer email="git@killbots.net">Geoffrey Biggs</maintainer>
-  <license>Apache License 2.0</license>
-
-  <buildtool_depend>ament_cmake</buildtool_depend>
-
-  <build_depend>rclcpp</build_depend>
-  <build_depend>std_msgs</build_depend>
-  <build_depend>rclcpp_components</build_depend>
-
-  <exec_depend>rclcpp</exec_depend>
-  <exec_depend>std_msgs</exec_depend>
-  <exec_depend>rclcpp_components</exec_depend>
-
-  <export>
-    <build_type>ament_cmake</build_type>
-  </export>
-</package>
-
-```
-
-#### CMakeLists.txt
-
-```cmake CMakeList.txt
-cmake_minimum_required(VERSION 3.5)
-# パッケージ名
-project(greeter_ros2_style)
-
-# C++14を利用する
-if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 14)
-endif()
-
-# すべてのワーニングを表示する
-if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(-Wall -Wextra -Wpedantic)
-endif()
-
-# 依存するパッケージを探す
-find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(std_msgs REQUIRED)
-find_package(rclcpp_components REQUIRED)
-
-include_directories(include)
-
-# コンポーネントノードの共有ライブラリをコンパイルする
-add_library(greeter_component SHARED src/greeter_component.cpp)
-# コンポーネントノードのヘッダーファイルのマクロを設定する
-target_compile_definitions(greeter_component PRIVATE "GREETER_BUILDING_DLL")
-ament_target_dependencies(greeter_component
-  rclcpp
-  std_msgs
-  rclcpp_components
-  )
-# コンポーネントノードをamentのリソースインデクスに登録する
-rclcpp_components_register_nodes(greeter_component "greeter_ros2_style::Greeter")
-
-# スタンドアローンノードの実行ファイルをコンパイルする
-add_executable(greeter src/greeter.cpp)
-# 共有ライブラリに実行ファイルをリンクする
-target_link_libraries(greeter greeter_component)
-# 実行ファイルのコンパイルターゲットに依存パッケージの情報を追加する
-ament_target_dependencies(greeter rclcpp std_msgs)
-
-# コンポーネントノードのヘッダーファイルをインストールする
-install(DIRECTORY
-  include/greeter_ros2_style
-  DESTINATION include
-  )
-
-# コンポーネントノードの共有ライブラリをインストールする
-install(TARGETS
-  greeter_component
-  ARCHIVE DESTINATION lib
-  LIBRARY DESTINATION lib
-  RUNTIME DESTINATION bin
-  )
-
-# スタンドアローンの実行ファイルをインストールする
-install(TARGETS
-  greeter
-  DESTINATION lib/${PROJECT_NAME}
-  )
-
-# amentのリソースインデクスにパッケージを登録する
-ament_package()
-
-```
 
 ### ソースコード
 
@@ -218,15 +120,22 @@ source install/local_setup.bash
 ros2 run greeter_ros2_style greeter
 ```
 
+下記のコマンドで
+``` shell
+ros2 node list
+
+ros2 topic list
+```
+
 ## 2-1-2.受信ノードの準備
 
-すでに受信側のソースコードは準備してありますが、不足している部分があります。
+Displayerで重要な箇所は
+~/ros2_basics/src/ros2-hands-on/receiving_messages/displayer/src/displayer_component.cppを開いて確認しましょう。
 
-~/ros2_basics/src/ros2-hands-on/receiving_messages/displayer/src/displayer_component.cppを開いて修正していきましょう
 
-### displayer.cppのソースコード
+### displayer_component.cppのソースコード
 
-```cpp displayer.cpp
+```cpp displayer_component.cpp
 
 Displayer::Displayer(const rclcpp::NodeOptions & options)
 : Node("displayer", options)

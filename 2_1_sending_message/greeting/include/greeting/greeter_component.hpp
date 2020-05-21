@@ -67,8 +67,9 @@ public:
   GREETER_PUBLIC explicit Greeter(const rclcpp::NodeOptions & options);
 
 private:
-  // パブリッシャーとタイマーを持つ変数
+  // パブリッシャー
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_;
+  // タイマーを持つ変数
   rclcpp::TimerBase::SharedPtr timer_;
 
   // ノードの振る舞いを実装するメンバー関数

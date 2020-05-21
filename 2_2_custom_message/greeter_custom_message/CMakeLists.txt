@@ -16,18 +16,18 @@ find_package(greeting_msg REQUIRED)
 
 include_directories(include)
 
-add_library(greeter_component SHARED src/greeter_component.cpp)
-target_compile_definitions(greeter_component PRIVATE "GREETER_BUILDING_DLL")
-ament_target_dependencies(greeter_component
+add_library(greeter_custom_component SHARED src/greeter_custom_msg_component.cpp)
+target_compile_definitions(greeter_custom_component PRIVATE "GREETER_BUILDING_DLL")
+ament_target_dependencies(greeter_custom_component
   rclcpp
   rclcpp_components
   greeting_msg
   )
-rclcpp_components_register_nodes(greeter_component "greeter_custom_msg::Greeter")
+rclcpp_components_register_nodes(greeter_custom_component "greeter_custom_msg::Greeter")
 
-add_executable(greeter src/greeter.cpp)
-target_link_libraries(greeter greeter_component)
-ament_target_dependencies(greeter rclcpp rclcpp_components greeting_msg)
+add_executable(greeter_custom src/greeter_custom_message.cpp)
+target_link_libraries(greeter_custom greeter_custom_component)
+ament_target_dependencies(greeter_custom rclcpp rclcpp_components greeting_msg)
 
 ament_export_dependencies(ament_cmake)
 ament_export_dependencies(rclcpp)
@@ -36,7 +36,7 @@ ament_export_dependencies(greeting_msg)
 
 ament_export_include_directories(include)
 
-ament_export_libraries(greeter_component)
+ament_export_libraries(greeter_custom_component)
 
 install(DIRECTORY
   include/greeter
@@ -44,14 +44,14 @@ install(DIRECTORY
   )
 
 install(TARGETS
-  greeter_component
+  greeter_custom_component
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
   )
 
 install(TARGETS
-  greeter
+  greeter_custom
   DESTINATION lib/${PROJECT_NAME}
   )
 

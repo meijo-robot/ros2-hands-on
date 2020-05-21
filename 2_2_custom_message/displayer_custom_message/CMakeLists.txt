@@ -16,18 +16,18 @@ find_package(rclcpp_components REQUIRED)
 
 include_directories(include)
 
-add_library(displayer_component SHARED src/displayer_component.cpp)
-target_compile_definitions(displayer_component PRIVATE "DISPLAYER_BUILDING_DLL")
-ament_target_dependencies(displayer_component
+add_library(displayer_custom_component SHARED src/displayer_component.cpp)
+target_compile_definitions(displayer_custom_component PRIVATE "DISPLAYER_BUILDING_DLL")
+ament_target_dependencies(displayer_custom_component
   rclcpp
   rclcpp_components
   greeting_msg
   )
-rclcpp_components_register_nodes(displayer_component "displayer_custom_msg::Displayer")
+rclcpp_components_register_nodes(displayer_custom_component "displayer_custom_msg::Displayer")
 
-add_executable(displayer src/displayer.cpp)
-target_link_libraries(displayer displayer_component)
-ament_target_dependencies(displayer rclcpp rclcpp_components greeting_msg)
+add_executable(diplayer_custom src/displayer.cpp)
+target_link_libraries(diplayer_custom displayer_custom_component)
+ament_target_dependencies(diplayer_custom rclcpp rclcpp_components greeting_msg)
 
 ament_export_dependencies(ament_cmake)
 ament_export_dependencies(rclcpp)
@@ -36,7 +36,7 @@ ament_export_dependencies(greeting_msg)
 
 ament_export_include_directories(include)
 
-ament_export_libraries(displayer_component)
+ament_export_libraries(displayer_custom_component)
 
 install(DIRECTORY
   include/displayer
@@ -44,14 +44,14 @@ install(DIRECTORY
   )
 
 install(TARGETS
-  displayer_component
+  displayer_custom_component
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
   )
 
 install(TARGETS
-  displayer
+  diplayer_custom
   DESTINATION lib/${PROJECT_NAME}
   )
 

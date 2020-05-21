@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "greeter/greeter_component.hpp"
+#include "greeter/greeter_custom_msg_component.hpp"
 
 #include <class_loader/register_macro.hpp>
 #include <rosidl_generator_cpp/message_initialization.hpp>

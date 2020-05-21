@@ -15,7 +15,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <memory>
 
-#include "greeter/greeter_component.hpp"
+#include "greeter/greeter_custom_msg_component.hpp"
 
 int main(int argc, char *argv[]) {
   rclcpp::init(argc, argv);

@@ -96,7 +96,7 @@ colconはcatkinと違って、すべてのビルドされたファイルがソ�
 symlinkedインストールを行うにはには--symlink-installオプションをつけてビルドしてください。
 
 ```sh
-cd ~/ros2_intro_colcon
+cd ~/intro_colcon
 colcon build --symlink-install
 ```
 
@@ -107,7 +107,7 @@ colcon build --symlink-install
 テストの実行
 
 ```sh
-cd ~/ros2_intro_colcon
+cd ~/intro_colcon
 colcon test
 ```
 

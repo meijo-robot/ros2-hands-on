@@ -9,7 +9,7 @@
 
 ```sh
 source /opt/ros/dashing/setup.bash
-mkdir -p ~/ros2_intro_colcon/src
+mkdir -p ~/intro_colcon/src
 ```
 
 次にgitを使って練習用のパッケージをダウンロードします。

@@ -18,9 +18,10 @@ ubuntu のインストールは下記のQiita等を参照下さい
 
 インストール後にターミナルを起動して以下のコマンドを実行してください。
 ``` sh
-$ sudo apt-get update
-$ sudo apt-get upgrade
+$ sudo apt update
+$ sudo apt upgrade
 ```
+
 
 VirtualBoxの**Guest Addition CD** をインストールして仮想OSを再起動してください
 

@@ -58,7 +58,7 @@ colcon build
 [略]
 ```
 
-今回は初回ビルドなので、すべてのソースをまとめてビルドしましたが、以下のコマンドで、パッケージを指定してビルドすることができます。
+今回は初回ビルドなので、すべてのソースをまとめてビルドしましたが、以下のコマンドでパッケージを指定してビルドすることができます。
 
 ``` sh
 cd ~/intro_colcon
@@ -87,7 +87,7 @@ source install/local_setup.bash
 ros2 run examples_rclcpp_minimal_publisher publisher_member_function
 ```
 
-(1.3〜1.4はやらなくても影響ありません)
+(1.3〜1.4は参考です。)
 
 ## 1-3. (参考)symlinkedインストール
 

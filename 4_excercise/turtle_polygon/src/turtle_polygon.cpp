@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
 
   // アクションクライントを作成する
   auto client = rclcpp_action::create_client<TurtleAction>(node, "turtle1/rotate_absolute");
+  // パブリッシャーを作成する
   auto publisher = node->create_publisher<geometry_msgs::msg::Twist>("turtle1/cmd_vel", 10);
 
   // アクションが提供されるまで待つ
@@ -42,56 +43,10 @@ int main(int argc, char *argv[])
     }
     RCLCPP_INFO(node->get_logger(), "Waiting for action server...");
   }
-  float angle = 0;
-  auto vel = geometry_msgs::msg::Twist();
-  vel.linear.x=3.0;
-  
-  for( int i = 0; i < 4 ; i++)
-  {
-    // アクションGoalを作成する
-    auto goal = TurtleAction::Goal();
-    goal.theta = angle ;
 
-    RCLCPP_INFO(node->get_logger(), "Sending goal");
-    using std::placeholders::_1;
-    using std::placeholders::_2;
-    auto send_goal_options = rclcpp_action::Client<TurtleAction>::SendGoalOptions();
-    // send_goal_options.feedback_callback = std::bind(&feedback_callback, node, _1, _2);
-    auto goal_handle_future = client->async_send_goal(goal, send_goal_options);
-
-    // Goalがサーバーでアクセプトされるまで待つ
-    if (rclcpp::spin_until_future_complete(node, goal_handle_future) !=
-        rclcpp::executor::FutureReturnCode::SUCCESS) {
-      RCLCPP_ERROR(node->get_logger(), "Send goal call failed");
-      rclcpp::shutdown();
-      return 1;
-    }
-
-    rclcpp_action::ClientGoalHandle<TurtleAction>::SharedPtr goal_handle = goal_handle_future.get();
-    if (!goal_handle) {
-      RCLCPP_ERROR(node->get_logger(), "Goal was rejected by server");
-      rclcpp::shutdown();
-      return 1;
-    }
-
-    // サーバーでアクションの実行が終わるまで待つ
-    RCLCPP_INFO(node->get_logger(), "Waiting for result");
-    auto result_future = client->async_get_result(goal_handle);
-    if (rclcpp::spin_until_future_complete(node, result_future) !=
-        rclcpp::executor::FutureReturnCode::SUCCESS) {
-      RCLCPP_ERROR(node->get_logger(), "Failed to get action result");
-      rclcpp::shutdown();
-      return 1;
-    }
-
-    
-    RCLCPP_INFO(node->get_logger(), "直進！！");
-    publisher->publish(vel);//直進させる
-
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-
-    angle += 1.57;
-  }
+  //
+  // ここにコードを記述して亀に四角形を描かせよう。
+  //
 
   rclcpp::shutdown();
   return 0;

@@ -2,7 +2,9 @@
 
 ## 3-1.「ros2」コマンド
 
-ros2はROS 2の主なコマンドライン（CUI）ツールです。 ROS 1のrostopic、rosservice等のコマンドの変わりです。 様々な「verb」と呼ぶサブコマンドでROS 2のノード、トピック等を操ることができます。
+ros2はROS 2の主なコマンドライン（CUI）ツールです。 ROS1のrostopic、rosservice等のコマンドの代替です。 様々な「verb」と呼ぶサブコマンドでROS2のノード、トピック等を操ることができます。
+
+各サブコマンドは--helpオプションをつけることで、詳細なヘルプをみることができます。トピックやノードの
 
 ```shell
 $ ros2 -h
@@ -44,9 +46,10 @@ $ ros2 pkg list
 action_msgs
 action_tutorials
 略
-$ cd workspace
+$ cd somewhere_workspace
 ....
 $ ros2 pkg create test
+# パッケージの作成
 going to create a new package
 package name: test
 ...略

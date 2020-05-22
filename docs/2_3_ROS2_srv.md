@@ -129,4 +129,6 @@ response:
 request_greeting_service.srv.RequestGreeting_Response(greeting='Hello, test')
 ```
 
+確認できたら各ターミナルで[Ctrl + c]を押してプログラムを停止してください。
+
 [2-4. アクション　へ進む](2_4_ROS2_action.md)

@@ -143,7 +143,7 @@ string greeting
 uint8 percent_complete
 ```
 
-サービスと同様に、actionもコマンドで動作確認ができます。[端末A]が動いている状態で、以下のコマンドを実行すると、アクションを実行[することができます。
+サービスと同様に、actionもコマンドで動作確認ができます。上の[端末A]が動いている状態で、以下のコマンドを実行すると、アクションを実行[することができます。
 
 ```shell
 $ ros2 action send_goal -f  /process_greeting greeting_actions/action/ProcessGreeting "{name: \"test\"}"
@@ -191,5 +191,7 @@ Result:
 
 Goal finished with status: SUCCEEDED
 ```
+
+確認できたら各ターミナルで[Ctrl + c]を押してプログラムを停止してください。
 
 [3. その他のツール　へ進む](3_ROS2_TOOLS.md)

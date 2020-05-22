@@ -142,9 +142,10 @@ $ ros2 topic list -t
 
 ```shell
 $ . ~/ros2_basics/install/local_setup.bash
-_
 $ ros2 msg list | grep greet
 greeting_msg/msg/Greeting
 ```
+
+確認できたら各ターミナルで[Ctrl + c]を押してプログラムを停止してください。
 
 [2-3サービス に進む](2_3_ROS2_srv.md)

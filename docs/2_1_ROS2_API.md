@@ -153,6 +153,8 @@ $ ros2 topic list -t
 - ``` ros2 topic list ```では-tオプションをつけることで、トピックの型を確認できます。
 - ``` rost node ``` ``` rost topic ``` に-hオプションをつけることで各コマンドのヘルプが表示されます。コマンドの詳細がわからない場合、これらで確認してください。
 
+確認できたら各ターミナルで[Ctrl + c]を押してプログラムを停止してください。
+
 ## 2-1-2.受信ノードの準備
 
 Displayerで重要な箇所はdisplayer_component.cppです。
@@ -195,15 +197,30 @@ Finished <<< greeting [0.35s]
 Summary: 2 packages finished [0.49s]
 ```
 
-実行は以下のコマンドです。
-ターミナルに'[INFO] [displayer]: Received greeting 'hello world''と表示されれば成功です。
+2つのターミナルにで以下のコマンドを実行してください。
+端末Bを実行後に端末Aに'[INFO] [displayer]: Received greeting 'hello world''と表示されれば成功です。
+
+[端末A]
 
 ``` shell
 $ . install/local_setup.bash
 $ ros2 run displayer_basic_version displayer
+#端末B実行後に表示
 [INFO] [displayer]: Received greeting 'hello world'
 [INFO] [displayer]: Received greeting 'hello world'
 [INFO] [displayer]: Received greeting 'hello world'
 ```
+
+[端末B]
+
+```shell
+$ . install/local_setup.bash
+$ ros2 run greeting greeter
+[INFO] [greeter]: Publishing greeting 'hello world'
+[INFO] [greeter]: Publishing greeting 'hello world'
+[INFO] [greeter]: Publishing greeting 'hello world'
+```
+
+確認できたら各ターミナルで[Ctrl + c]を押してプログラムを停止してください。
 
 [2-2.メッセージ型の定義へ進む](2_2_ROS2_msg.md)

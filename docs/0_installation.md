@@ -69,6 +69,7 @@ sudo snap install --classic code
 $ sudo locale-gen ja_JP ja_JP.UTF-8
 $ sudo update-locale LC_ALL=ja_JP.UTF-8 LANG=ja_JP.UTF8
 $ export LANG=ja_JP.UTF-8
+(略)
 ```
 
 ### 0-2-2.リストに追加して鍵を許可する
@@ -80,13 +81,17 @@ ROS2のパッケージリポジトリをaptのsources.list.dに追加し、リ�
 $ sudo apt update
 $ sudo apt install curl gnupg2 lsb-release
 $ curl http://repo.ros2.org/repos.key | sudo apt-key add -
+(略)
 ```
 
 ### 0-2-3.リポジトリの登録
-下記のコマンドで追加のリポジトリをROS2に追加します
+
+下記のコマンドでROS2のリポジトリをUbuntuに追加します
+
 ```sh
 $ sudo sh -c 'echo "deb [arch=amd64,arm64] http://packages.ros.org/ros2/ubuntu `lsb_release -cs` main" > /etc/apt/sources.list.d/ros2-latest.list'
 $ sudo apt update
+(略)
 ```
 
 ### 0-2-4.全てのROS2パッケージのインストールを行う
@@ -97,13 +102,16 @@ $ sudo apt update
 $ export ROS_DISTRO=dashing
 $ sudo apt update
 $ sudo apt install ros-${ROS_DISTRO}-desktop
+(略)
 ```
 
 ### 0-2-5.Pythonのargcompleteパッケージ他のインストール
+
 下記のコマンドで、ROS2で使うビルドシステムなどのソフトウェアをインストールします
 
 ```sh
 $ sudo apt install python3-colcon-common-extensions python3-rosdep python3-argcomplete
+(略)
 ```
 
 - python3-colcon-common-extensions
@@ -117,6 +125,7 @@ ROSを使用する際には、/opt/ros/以下のディレクトリにパスが�
 
 ```sh
 $ echo "source /opt/ros/dashing/setup.bash" >> ~/.bashrc
+(略)
 ```
 
 ## 0-3.ROS2のインストール確認
@@ -124,15 +133,24 @@ $ echo "source /opt/ros/dashing/setup.bash" >> ~/.bashrc
 ROS2のインストールが正常に行えているかどうかをサンプルプログラムを用いてチェックを行います。
 ターミナルを立ち上げ、以下を入力してlistenerノードを起動してください。
 
-```
+```shell
 $ ros2 run demo_nodes_cpp listener
+[INFO] [listener]: I heard: [Hello World: 1]
+[INFO] [listener]: I heard: [Hello World: 2]
+...
 ```
 
 listenerノードの起動後、 **別のターミナル**を立ち上げ、
 
-```
+```shell
 $ ros2 run demo_nodes_cpp talker
+[INFO] [talker]: Publishing: 'Hello World: 1'
+[INFO] [talker]: Publishing: 'Hello World: 2'
+....
 ```
 
 と入力してtalkerノードを起動してください。
+
 それぞれのターミナルに同様の文字が出力されていれば成功です。
+
+確認できたら各ターミナルで[Ctrl + c]を押してプログラムを停止してください。

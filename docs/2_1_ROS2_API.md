@@ -124,7 +124,7 @@ Finished <<< greeting [0.35s]
 Summary: 2 packages finished [0.49s]
 ```
 
-source コマンドは"."で代替が可能です。こちらのほうが短く記述できるのでこれ以降、この方法を使います。
+sourceコマンドは"."で代替が可能です。こちらのほうが短く記述できるのでこれ以降、この方法を使います。
 
 ``` shell
 $ . install/local_setup.bash

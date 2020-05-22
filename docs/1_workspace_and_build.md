@@ -93,7 +93,7 @@ $ ros2 run examples_rclcpp_minimal_publisher publisher_member_function
 ....
 ```
 
-認できたら各ターミナルで[Ctrl + c]を押してプログラムを停止してください。
+動作が確認できたら各ターミナルで[Ctrl + c]を押してプログラムを停止してください。
 
 ## 1-3.COLCON_IGNORE
 

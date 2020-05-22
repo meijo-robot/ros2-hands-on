@@ -34,7 +34,10 @@ $ ros2 run turtlesim turtlesim_node
 [INFO] [turtlesim]: Spawning turtle [turtle1] at x=[5.544445], y=[5.544445], theta=[0.000000]
 ```
 
-カメの絵がポツンと表示された画面が出ると思います。
+下図のようにカメの絵がポツンと表示された画面が出ると思います。
+
+![sim](img/turtule.jpg)
+
 もう一つ、新しいターミナルを開き, 以下を実行してください。
 
 [端末B]
@@ -93,6 +96,8 @@ angular:
 
 以上の情報を踏まえて、以下の演習問題を行ってみてください。
 
+**注意**：演習問題を始める前に4_excercise/COLCON_IGNOREをリネームもしくは削除してください。
+
 ## 4-3. 演習問題 1
 
 4_excercise/turtle_circle に正常に動作しない,Publisherのコード設置してあります。
@@ -102,5 +107,7 @@ angular:
 
 1. turtle_simにはアクションが定義されています。```ros2 action list -t```コマンドを実行して型を調べてみましょう。
 2. 調べたアクショントピックの型を```ros2 action show```に引数として与えて、型の定義を確認しましょう。
-3. 2_4_action/greet_meをコピーパッケージを作り、カメを動かすためのアクションクライアントを作ってみましょう。```ros2 action send_goal```が助けになるはずです。
+3. 4_excercise/turtle_polygonに問題回答用のパッケージを作成してあります。コードを編集してカメを動かすためのアクションクライアントを作ってみましょう。```ros2 action send_goal```が助けになるはずです。
 4. アクションクライアントとトピックを組み合わせて、カメに四角形を描かせるノードを作ってみましょう
+
+(演習問題2がどうしても回答できない場合には4_excercise/turtle_polygon_answerに回答の例を設置してありますので、参考にしてください。)

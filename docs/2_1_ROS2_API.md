@@ -139,6 +139,7 @@ $ ros2 run greeting greeter
 ```
 
 greeterを起動中に下記のコマンドで起動中のノードやトピックを確認できます。
+コマンドを実行して確認してみましょう。
 
 ```shell
 $ ros2 node list
@@ -148,6 +149,9 @@ $ ros2 topic list -t
 /parameter_events [rcl_interfaces/msg/ParameterEvent]
 /rosout [rcl_interfaces/msg/Log]
 ```
+
+- ``` ros2 topic list ```では-tオプションをつけることで、トピックの型を確認できます。
+- ``` rost node ``` ``` rost topic ``` に-hオプションをつけることで各コマンドのヘルプが表示されます。コマンドの詳細がわからない場合、これらで確認してください。
 
 ## 2-1-2.受信ノードの準備
 

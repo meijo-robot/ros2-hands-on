@@ -95,9 +95,9 @@ $ ros2 run examples_rclcpp_minimal_publisher publisher_member_function
 
 認できたら各ターミナルで[Ctrl + c]を押してプログラムを停止してください。
 
-## 1-3.ColconIgnore
+## 1-3.COLCON_IGNORE
 
-パッケージによってはcolconでビルドしたくないパッケージがあると思います。パッケージのディレクトリに"COLCONIGNORE"というタイトルのファイルを作るだけで、そのパッケージはビルド時に無視されます。
+パッケージによってはcolconでビルドしたくないパッケージがあると思います。(例えば、ROS1のパッケージ等)パッケージのディレクトリに"COLCONIGNORE"というタイトルのファイルを作るだけで、そのパッケージはビルド時に無視されます。
 
 (1.4〜1.5は参考です。)
 

@@ -62,8 +62,9 @@ void GreetingServer::send_greeting(
 以下のコマンドでビルドしてみましょう。
 
 ``` shell
-cd ~/ros2_basics
-colcon build --merge-install
+$ cd ~/ros2_basics
+$ colcon build --merge-install
+(略)
 ```
 
 ## 2-3-3.実行
@@ -73,31 +74,59 @@ colcon build --merge-install
 [端末 A]
 
 ```shell
-. ~/ros2_basics/install/local_setup.bash
-ros2 run greeting_server greeting_server
+$. ~/ros2_basics/install/local_setup.bash
+$ ros2 run greeting_server greeting_server
+[INFO] [greeting_server]: Responding to greeting request with 'Hello, Bob'
 ```
 
 [端末 B]
 
 ```shell
-. ~/ros2_basics/install/local_setup.bash
-ros2 run greeting_client greeting_client
+$ . ~/ros2_basics/install/local_setup.bash
+$ ros2 run greeting_client greeting_client
+[INFO] [greeting_client]: Received greeting: 'Hello, Bob'
 ```
 
-## 2-3-4.メッセージの確認
+## 2-3-4.サービスの確認
 
-ros2 service のサブコマンドで現在動いているサービスの一覧を確認することができます。
+ros2 service listのサブコマンドで現在動いているサービスの一覧を確認することができます。
+```-t```オプションをつけることで、サービスの型を確認することができます
 
 ```shell
-. ~/ros2_basics/install/local_setup.bash
-ros2 service list
+$ . ~/ros2_basics/install/local_setup.bash
+$ ros2 service list -t
+/greeting_server/describe_parameters [rcl_interfaces/srv/DescribeParameters]
+/greeting_server/get_parameter_types [rcl_interfaces/srv/GetParameterTypes]
+/greeting_server/get_parameters [rcl_interfaces/srv/GetParameters]
+/greeting_server/list_parameters [rcl_interfaces/srv/ListParameters]
+/greeting_server/set_parameters [rcl_interfaces/srv/SetParameters]
+/greeting_server/set_parameters_atomically [rcl_interfaces/srv/SetParametersAtomically]
+/request_greeting [request_greeting_service/srv/RequestGreeting]
 ```
 
-また、独自に定義したメッセージ型の一覧を見たい場合にはsrvサブコマンドを使います
+定義されているメッセージ型の一覧を見たい場合にはsrvサブコマンドを使います。
+下記ではgrepを使って、今回作成した型のみを表示させています。
 
 ```shell
-. ~/ros2_basics/install/local_setup.bash
-ros2 srv list
+$ . ~/ros2_basics/install/local_setup.bash
+$ ros2 srv list | grep greet
+request_greeting_service/srv/RequestGreeting
+```
+
+```ros2 service call```を使用し、サービスにリクエストをコマンドで送ることも可能です。
+
+```ros2 service call [サービス名] [サービスの型] "サービスに渡す値"```
+
+で実行します。以下は実行例です。
+
+```shell
+$ . ~/ros2_basics/install/local_setup.bash
+$ ros2 service call /request_greeting request_greeting_service/srv/RequestGreeting "{name: \"test\"}"
+waiting for service to become available...
+requester: making request: request_greeting_service.srv.RequestGreeting_Request(name='test')
+
+response:
+request_greeting_service.srv.RequestGreeting_Response(greeting='Hello, test')
 ```
 
 [2-4. アクション　へ進む](2_4_ROS2_action.md)

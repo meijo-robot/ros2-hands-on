@@ -40,7 +40,7 @@ Commands:
 パッケージの関連のサブコマンドですlistでパッケージの一覧を見ることができます。また、createを使用するとパッケージの作成が可能です。
 
 ```shell
-$ ros2 pkg list 
+$ ros2 pkg list
 action_msgs
 action_tutorials
 略

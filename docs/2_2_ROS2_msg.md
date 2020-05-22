@@ -85,8 +85,9 @@ ament_export_dependencies(greeting_msg)
 以下のコマンドで、ビルドしてみましょう
 
 ``` shell
-cd ~/ros2_basics
-colcon build
+$ cd ~/ros2_basics
+$ colcon build
+(略)
 ```
 
 ## 2-2-3.実行
@@ -96,8 +97,9 @@ colcon build
 ### [端末 A]
 
 ```shell
-. ~/ros2_basics/install/local_setup.bash
-ros2 run displayer_custom_msg diplayer_custom
+$ . ~/ros2_basics/install/local_setup.bash
+$ ros2 run displayer_custom_msg diplayer_custom
+..
 ```
 
 ### [端末 B]

@@ -32,13 +32,15 @@ cd ros2-hands-on
 ### ビルドの準備
 
 まず、2_1_sending_message/COLCON_IGNOREファイルをリネームするか削除してください。
-(COLCON_IGNOREファイルが設置されているフォルダはcolconから無視されます)
+(COLCON_IGNOREファイルが設置されているディレクトリはcolconから無視されます)
 
 ROSのノードを実装する際に必要なのがpackage.xml とCMakeLists.txtです。
 それぞれ以下の役目があります。
 
 - package.xml : プログラムに必要な依存関係を記述
 - CMakeLists : プログラムのビルドの手順などを記述
+
+最初は慣れないと思うので、一通り目を通すだけにしておきましょう。
 
 ### ソースコード
 
@@ -85,7 +87,7 @@ RCLCPP_COMPONENTS_REGISTER_NODE(greeter_ros2_style::Greeter)
 
 ```
 
-最後が、プログラム本体です。クラスとして定義したノードをこのプログラムから呼び出しています
+プログラム本体です。クラスとして定義したノードをこのプログラムから呼び出しています
 
 ```cpp greeter.cpp
 #include <rclcpp/rclcpp.hpp>
@@ -113,8 +115,13 @@ int main(int argc, char *argv[]) {
 プログラムのビルドは以下のコマンドで行います。
 
 ``` shell
-cd ~/ros2_basics/
-colcon build
+$ cd ~/ros2_basics/
+$ colcon build
+(略)
+Finished <<< displayer_basic_version [0.35s]
+Finished <<< greeting [0.35s]
+
+Summary: 2 packages finished [0.49s]
 ```
 
 source コマンドは"."で代替が可能です。こちらのほうが短く記述できるのでこれ以降、この方法を使います。
@@ -131,11 +138,15 @@ $ ros2 run greeting greeter
 [INFO] [greeter]: Publishing greeting 'hello world'
 ```
 
-下記のコマンドで
-``` shell
-ros2 node list
+greeterを起動中に下記のコマンドで起動中のノードやトピックを確認できます。
 
-ros2 topic list
+```shell
+$ ros2 node list
+/greeter
+$ ros2 topic list -t
+/greeting [std_msgs/msg/String]
+/parameter_events [rcl_interfaces/msg/ParameterEvent]
+/rosout [rcl_interfaces/msg/Log]
 ```
 
 ## 2-1-2.受信ノードの準備
@@ -167,18 +178,25 @@ void Displayer::display_greeting(const std_msgs::msg::String::SharedPtr msg)
 
 ### ビルド・実行
 
-それではdisplayerのビルドを行っていきましょう.以下のコマンドでビルドできます。
+それではdisplayerのビルドを行っていきましょう。新しいターミナルを開いて以下のコマンドでビルドできます。
 
 ```sh
-cd ~/ros2_basics/
-colcon build --packages-select displayer_basic_version
+$ cd ~/ros2_basics/
+$ colcon build
+Starting >>> displayer_basic_version
+Starting >>> greeting
+Finished <<< displayer_basic_version [0.35s]
+Finished <<< greeting [0.35s]
+
+Summary: 2 packages finished [0.49s]
 ```
 
 実行は以下のコマンドです。
+ターミナルに'[INFO] [displayer]: Received greeting 'hello world''と表示されれば成功です。
 
 ``` shell
 $ . install/local_setup.bash
-$ ros2 run displayer_basic_version displayer 
+$ ros2 run displayer_basic_version displayer
 [INFO] [displayer]: Received greeting 'hello world'
 [INFO] [displayer]: Received greeting 'hello world'
 [INFO] [displayer]: Received greeting 'hello world'

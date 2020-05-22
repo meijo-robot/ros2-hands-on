@@ -110,14 +110,25 @@ int main(int argc, char *argv[]) {
 
 ### ビルド & 実行
 
-``` shell
-cd ~/ros2_basics/
-colcon build --packages-select greeter_ros2_style
-```
+プログラムのビルドは以下のコマンドで行います。
 
 ``` shell
-source install/local_setup.bash
-ros2 run greeter_ros2_style greeter
+cd ~/ros2_basics/
+colcon build
+```
+
+source コマンドは"."で代替が可能です。こちらのほうが短く記述できるのでこれ以降、この方法を使います。
+
+``` shell
+$ . install/local_setup.bash
+# 実行後は何も表示されません
+```
+
+```shell
+$ ros2 run greeting greeter
+[INFO] [greeter]: Publishing greeting 'hello world'
+[INFO] [greeter]: Publishing greeting 'hello world'
+[INFO] [greeter]: Publishing greeting 'hello world'
 ```
 
 下記のコマンドで
@@ -129,9 +140,8 @@ ros2 topic list
 
 ## 2-1-2.受信ノードの準備
 
-Displayerで重要な箇所は
+Displayerで重要な箇所はdisplayer_component.cppです。
 ~/ros2_basics/src/ros2-hands-on/receiving_messages/displayer/src/displayer_component.cppを開いて確認しましょう。
-
 
 ### displayer_component.cppのソースコード
 
@@ -146,7 +156,7 @@ Displayer::Displayer(const rclcpp::NodeOptions & options)
     "greeting", 10, std::bind(&Displayer::display_greeting, this, _1));
 }
 
-//実際のアクション
+//ハンドラ関数
 void Displayer::display_greeting(const std_msgs::msg::String::SharedPtr msg)
 {
   //35行目
@@ -167,8 +177,11 @@ colcon build --packages-select displayer_basic_version
 実行は以下のコマンドです。
 
 ``` shell
-source install/local_setup.bash
-ros2 run greeter_ros2_style greeter
+$ . install/local_setup.bash
+$ ros2 run displayer_basic_version displayer 
+[INFO] [displayer]: Received greeting 'hello world'
+[INFO] [displayer]: Received greeting 'hello world'
+[INFO] [displayer]: Received greeting 'hello world'
 ```
 
 [2-2.メッセージ型の定義へ進む](2_2_ROS2_msg.md)

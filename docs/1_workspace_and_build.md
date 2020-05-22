@@ -83,17 +83,27 @@ source install/local_setup.bash
 
 プログラムは下記のコマンドで実行可能です。
 
-``` sh
-ros2 run examples_rclcpp_minimal_publisher publisher_member_function
+``` shell
+$ ros2 run examples_rclcpp_minimal_publisher publisher_member_function
+[INFO] [minimal_publisher]: Publishing: 'Hello, world! 0'
+[INFO] [minimal_publisher]: Publishing: 'Hello, world! 1'
+[INFO] [minimal_publisher]: Publishing: 'Hello, world! 2'
+[INFO] [minimal_publisher]: Publishing: 'Hello, world! 3'
+[INFO] [minimal_publisher]: Publishing: 'Hello, world! 4'
+....
 ```
+
+## 1-5.ColconIgnore
+
+パッケージによってはcolconでビルドしたくないパッケージがあると思います。パッケージのフォルダに"COLCONIGNORE"というタイトルのファイルを作るだけで、そのパッケージはビルド時に無視されます。
 
 (1.3〜1.4は参考です。)
 
-## 1-3. (参考)symlinkedインストール
+## 1-3. (参考)symlinkインストール
 
-colconはcatkinと違って、すべてのビルドされたファイルがソフトリンクされたdevelスペースがありません。 ですので、開発中のパッケージをインストールせずに利用することはできません。 ROS1の時代ではdevelスペースを利用して、インストールをせずに使用することができましたが、ROS２にはありません。代わりに「symlinked install」という手法を利用します。 これはインストールステップ実行時に、ファイルをコピーするのではなくソフトリンクを作成します。 結果的にdevelスペースのようになりますが、各ビルドツールのインストール機能を利用しているのでパッケージの開発者は何がどこにソフトリンクされるか管理できます。
+colconはcatkinと違って、すべてのビルドされたファイルがソフトリンクされたdevelスペースがありません。 ですので、開発中のパッケージをインストールせずに利用することはできません。 ROS1の時代ではdevelスペースを利用して、インストールをせずに使用することができましたが、ROS２にはありません。代わりに「symlink install」という手法を利用します。 これはインストールステップ実行時に、ファイルをコピーするのではなくソフトリンクを作成します。 結果的にdevelスペースのようになりますが、各ビルドツールのインストール機能を利用しているのでパッケージの開発者は何がどこにソフトリンクされるか管理できます。
 
-symlinkedインストールを行うにはには--symlink-installオプションをつけてビルドしてください。
+symlinkインストールを行うにはには--symlink-installオプションをつけてビルドしてください。
 
 ```sh
 cd ~/intro_colcon
@@ -111,8 +121,5 @@ cd ~/intro_colcon
 colcon test
 ```
 
-## 1-5.ColconIgnore
-
-パッケージによってはcolconでビルドしたくないパッケージがあると思います。パッケージのフォルダに"COLCONIGNORE"というタイトルのファイルを作るだけで、そのパッケージはビルド時に無視されます。
 
 [2-1へ進む](2_1_ROS2_API.md)

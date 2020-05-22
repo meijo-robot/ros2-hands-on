@@ -46,7 +46,7 @@ void GreetingServer::send_greeting(
   if (rclcpp::spin_until_future_complete(node, result) ==
     rclcpp::executor::FutureReturnCode::SUCCESS)
   {
-    RCLCPP_INFO(node->get_logger(), 
+    RCLCPP_INFO(node->get_logger(),
       "Received greeting: '%s'", result.get()->greeting.c_str());//結果の表示
   } else {
     RCLCPP_ERROR(node->get_logger(),

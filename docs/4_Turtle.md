@@ -25,6 +25,7 @@ turtlesim turtlesim_node
 ### 4-1-2 turtlesimを実行
 
 ターミナルで以下を実行してください。
+
 [端末A]
 
 ```shell

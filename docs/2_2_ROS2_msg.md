@@ -13,6 +13,7 @@
 
 新しい独自のメッセージ型を定義するにはmsgファイルを作成します。~/ros2_basics/src/ros2-hands-on/2_2_custom_messge/msgディレクトリ下にGreeting.msgという名前のファイルがあります。
 中身を確認してみましょう。
+
 ### Greeting.msgのファイルの中身
 
 ``` Greeting.msg
@@ -22,11 +23,12 @@ int16 count
 ```
 
 msgファイルでの定義は
-```
+
+```text
 型 フィールド名
 ```
-で定義されます。次章、次次章のservice,actionでも同じ記述をします。
 
+で定義されます。次章、次次章のservice,actionでも同じ記述をします。
 
 ### package.xml
 
@@ -90,25 +92,25 @@ colcon build
 ## 2-2-3.実行
 
 2つの端末でそれぞれ以下のコマンドを入力して実行してみましょう
-[端末 A]
+
+### [端末 A]
 
 ```shell
 . ~/ros2_basics/install/local_setup.bash
 ros2 run displayer_custom_msg diplayer_custom
 ```
 
-[端末 B]
+### [端末 B]
 
 ```shell
 $ . ~/ros2_basics/install/local_setup.bash
-  
 $ ros2 run greeter_custom_msg greeter_custom
 [INFO] [greeter]: Publishing greeting 'hello world 0'
 [INFO] [greeter]: Publishing greeting 'hello world 1'
 [INFO] [greeter]: Publishing greeting 'hello world 2'
 [INFO] [greeter]: Publishing greeting 'hello world 3'
 [INFO] [greeter]: Publishing greeting 'hello world 4'
-....
+......
 ```
 
 [端末A]に以下のように表示されれば成功です

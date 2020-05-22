@@ -47,6 +47,7 @@ colcon build --merge-install
 ## 2-2-4.実行
 
 2つの端末でそれぞれ以下のコマンドを入力して実行してみましょう
+
 [端末 A]
 
 ```shell

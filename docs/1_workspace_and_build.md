@@ -21,14 +21,14 @@ cd examples
 git checkout dashing
 ```
 
-src/下にソースコードがダウンロードされるので、フォルダ構造などを色々覗いてみましょう。
+src/下にソースコードがダウンロードされるので、ディレクトリ構造などを色々覗いてみましょう。
 
 ## 1-2 colconを使用してビルドする
 
 git でダウンロードしたパッケージをビルドしていきましょう。
 
 ビルドには**colcon**というコマンドを使います。
-colconはワークスペースを扱うときにワークスペースの最上位ディレクトリ(src/が見えるフォルダ)で実行しなければなりません。
+colconはワークスペースを扱うときにワークスペースの最上位ディレクトリ(src/が見えるディレクトリ)で実行しなければなりません。
 
 -h のオプションをつけることで、各サブコマンドのヘルプを確認することができます。
 やってみましょう。
@@ -65,7 +65,7 @@ cd ~/intro_colcon
 colcon build --packages-select examples_rclcpp_minimal_client
 ```
 
-lsコマンドでsrc/フォルダを見てみましょう。以下の3つのフォルダが新しくできていれば成功です。 
+lsコマンドでsrc/ディレクトリを見てみましょう。以下の3つのディレクトリが新しくできていれば成功です。
 
 - build
 - install
@@ -95,7 +95,7 @@ $ ros2 run examples_rclcpp_minimal_publisher publisher_member_function
 
 ## 1-5.ColconIgnore
 
-パッケージによってはcolconでビルドしたくないパッケージがあると思います。パッケージのフォルダに"COLCONIGNORE"というタイトルのファイルを作るだけで、そのパッケージはビルド時に無視されます。
+パッケージによってはcolconでビルドしたくないパッケージがあると思います。パッケージのディレクトリに"COLCONIGNORE"というタイトルのファイルを作るだけで、そのパッケージはビルド時に無視されます。
 
 (1.3〜1.4は参考です。)
 
@@ -120,6 +120,5 @@ colcon build --symlink-install
 cd ~/intro_colcon
 colcon test
 ```
-
 
 [2-1へ進む](2_1_ROS2_API.md)

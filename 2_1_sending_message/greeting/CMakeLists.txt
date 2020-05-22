@@ -58,5 +58,10 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
   )
 
+# launchディレクトリをshareへインストールする
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME})
+
 # amentのリソースインデクスにパッケージを登録する
 ament_package()

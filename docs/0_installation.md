@@ -29,11 +29,11 @@ VirtualBoxの**Guest Addition CD** をインストールして仮想OSを再起�
 
 VirtualBoxのゲストOS起動中に[デバイス]->[Guest Addition CDイメージの挿入]を選択すると、インストール用の仮想ディスクがゲストOSに挿入されます。
 
-[gust_addition_CD](img/guest_addition_.jpg)
+![gust_addition_CD](img/guest_addition_.jpg)
 
 以下の画面が出るので[実行する]をクリックしてください。
 
-[認証](img/auth.jpg)
+![認証](img/auth.jpg)
 
 認証を求められるのでパスワードを入力してください。インストールが完了すると再起動を求められるので、ゲストOSを再起動してください。
 

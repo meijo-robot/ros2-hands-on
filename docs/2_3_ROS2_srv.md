@@ -63,7 +63,7 @@ void GreetingServer::send_greeting(
 
 ``` shell
 $ cd ~/ros2_basics
-$ colcon build --merge-install
+$ colcon build
 (略)
 ```
 

@@ -48,7 +48,7 @@ action server は3つのコールバック関数を引数に必要とします�
 
 ```shell
 cd ~/ros2_basics
-colcon build --merge-install
+colcon build
 ```
 
 ## 2-2-4.実行
